@@ -1,7 +1,7 @@
 ; More advanced example: https://github.com/bovender/ExcelAddinInstaller
 
 [Setup]
-AppName=Saxo Bank OpenAPI for Excel
+AppName=SaxoBank OpenAPI for Excel
 AppVersion=1.4.0
 WizardStyle=modern
 DefaultDirName={autopf}\SaxoBankForExcel
@@ -32,8 +32,11 @@ Source: "OpenApi-AddIn-32bits-Mar-10-2022.xll"; DestDir: "{app}"
 Source: "OpenApi-AddIn-64bits-Mar-10-2022.xll"; DestDir: "{app}"
 Source: "README.txt"; DestDir: "{app}"; Flags: isreadme
 
-[Icons]
-;Name: "{group}\My Program"; Filename: "{app}\MyProg.exe"
+[InstallDelete]
+; Add all previous file names here, to be sure there is only one OpenApi XLL:
+; TODO Add wildcard (and use Saxo specific file names)
+Type: files; Name: "{userappdata}\Microsoft\AddIns\OpenApi-AddIn-32bits-Mar-10-2022.xll"
+Type: files; Name: "{userappdata}\Microsoft\AddIns\OpenApi-AddIn-64bits-Mar-10-2022.xll"
 
 [Code]
 // Source: https://stackoverflow.com/questions/2203980/detect-whether-office-is-32bit-or-64bit-via-the-registry
